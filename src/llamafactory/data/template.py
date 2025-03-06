@@ -769,7 +769,7 @@ register_template(
     name="deepseek3",
     format_user=StringFormatter(slots=["<｜User｜>{{content}}<｜Assistant｜>"]),
     format_assistant=StringFormatter(slots=["{{content}}<｜end▁of▁sentence｜>"]),
-    format_system=StringFormatter(slots=["{{content}}\n\n"]),
+    format_system=StringFormatter(slots=["{{content}}"]),
     format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
     thought_words=("<think>", "</think>"),
     stop_words=["<｜end▁of▁sentence｜>"],
