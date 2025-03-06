@@ -765,6 +765,18 @@ register_template(
     stop_words=["<|im_end|>"],
 )
 
+register_template(
+    name="deepseek3",
+    format_user=StringFormatter(slots=["<｜User｜>{{content}}<｜Assistant｜>"]),
+    format_assistant=StringFormatter(slots=["{{content}}<｜end▁of▁sentence｜>"]),
+    format_system=StringFormatter(slots=["{{content}}\n\n"]),
+    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
+    thought_words=("<think>", "</think>"),
+    stop_words=["<｜end▁of▁sentence｜>"],
+    efficient_eos=False,
+    replace_eos=False,
+    replace_jinja_template=True
+)
 
 register_template(
     name="deepseek",
@@ -772,14 +784,6 @@ register_template(
     format_system=StringFormatter(slots=["{{content}}\n\n"]),
     format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
 )
-
-
-register_template(
-    name="deepseek3",
-    format_user=StringFormatter(slots=["<｜User｜>{{content}}<｜Assistant｜>"]),
-    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
-)
-
 
 register_template(
     name="deepseekcoder",
